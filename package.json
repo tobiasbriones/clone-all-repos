@@ -1,0 +1,24 @@
+{
+  "name": "clone-all-repos",
+  "version": "1.0.0",
+  "description": "Command line tool to clone all user GitHub repositories.",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tobiasbriones/clone-all-repos.git"
+  },
+  "keywords": [
+    "command-line-tool",
+    "clone-repos",
+    "github-api"
+  ],
+  "author": "Tobias Briones <tobiasbriones.dev@gmail.com>",
+  "license": "Unlicense",
+  "bugs": {
+    "url": "https://github.com/tobiasbriones/clone-all-repos/issues"
+  },
+  "homepage": "https://github.com/tobiasbriones/clone-all-repos#readme"
+}
