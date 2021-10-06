@@ -9,8 +9,10 @@
  */
 
 import https from 'https';
+import { cloneAll } from './clone.mjs';
 import { getArgs } from './validation.mjs';
 
+const CLONE_DIR = 'clone';
 const HOSTNAME = 'api.github.com';
 const args = getArgs();
 const username = args[0];
@@ -38,18 +40,18 @@ function handleResponse(res) {
 
   console.log('Status code: ', status);
   res.on('data', d => (dataChunks += d));
-  res.on('end', () => onParseResponseData(JSON.parse(dataChunks)));
+  res.on('end', async () => await onParseResponseData(JSON.parse(dataChunks)));
   res.on('error', onError);
 }
 
-function onParseResponseData(data) {
+async function onParseResponseData(data) {
   const filterObj = obj => !obj.fork;
   const mapObj = obj => ({
     clone_url: obj.clone_url,
   });
   const repos = data.filter(filterObj).map(mapObj);
 
-  console.log(repos);
+  await cloneAll(repos, { dir: CLONE_DIR });
 }
 
 function onError(err) {
