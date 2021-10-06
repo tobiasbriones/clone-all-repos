@@ -22,29 +22,30 @@ export async function cloneAll(repos, { dir }) {
     try {
       await clone(repo, dir);
       clonedCount++;
-    } catch (e) {
+    }
+    catch (e) {
       console.log(e);
     }
   }
   console.log(`
-    Cloned ${clonedCount} repositories into directory ${dir}.
+    Cloned ${ clonedCount } repositories into directory ${ dir }.
   `);
 
   if (clonedCount !== repos.length) {
     console.log(`
-    Failed to clone ${repos.length - clonedCount} repositories.
+    Failed to clone ${ repos.length - clonedCount } repositories.
     `);
   }
 }
 
 async function clone(repo, dir) {
-  const { stdout, stderr } = await exec(`git clone ${repo.clone_url}`, {
-    cwd: dir,
+  const { stdout, stderr } = await exec(`git clone ${ repo.clone_url }`, {
+    cwd: dir
   });
 
   if (stderr) {
     console.log(stderr);
     return;
   }
-  console.log(`stdout: ${stdout}`);
+  console.log(`stdout: ${ stdout }`);
 }

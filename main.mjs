@@ -22,8 +22,8 @@ const options = {
   path: path,
   method: 'GET',
   headers: {
-    'User-Agent': 'request',
-  },
+    'User-Agent': 'request'
+  }
 };
 const req = https.request(options, handleResponse);
 
@@ -31,7 +31,7 @@ req.on('error', onError);
 req.end();
 
 function getPath(username) {
-  return `/users/${username}/repos`;
+  return `/users/${ username }/repos`;
 }
 
 function handleResponse(res) {
@@ -47,7 +47,7 @@ function handleResponse(res) {
 async function onParseResponseData(data) {
   const filterObj = obj => !obj.fork;
   const mapObj = obj => ({
-    clone_url: obj.clone_url,
+    clone_url: obj.clone_url
   });
   const repos = data.filter(filterObj).map(mapObj);
 
