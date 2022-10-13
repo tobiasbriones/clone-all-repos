@@ -32,6 +32,24 @@ The maximum value can be up to 100 repos per page so the script default
 config is set to that value to allow cloning all repos provided they're less
 than 100 (most cases).
 
+#### Fun Facts
+
+I made this script a year ago and noticed it didn't clone all my repos back in
+the time since they were always about ~45 and the default limit is 30. I've had
+to consume the GitHub API other times, and so I had in mind to fix this issue 
+in this project too.
+
+I don't care about forked repos here because they're not my intellectual 
+property, so that's why I filter them out.
+
+This script might be useful for some kind of backup to all your 
+public repositories.
+
+I made this project to use the Unlicense license for first time since I'm 
+into open source and have a lot of intellectual property knowledge that I've 
+acquired over my experience as a software engineer. Notice that IP skills are 
+super important to be an engineer.
+
 ### License
 
 This project is licensed under the [Unlicense License](LICENSE).
