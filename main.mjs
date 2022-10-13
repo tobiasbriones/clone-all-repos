@@ -36,9 +36,22 @@ function requestPath(username) {
 
 function handleResponse(res) {
   const status = res.statusCode;
-  let dataChunks = '';
 
   console.log('Status code: ', status);
+
+  if (status === 200) {
+    handleResponseOk(res)
+  }
+  else if (status === 404) {
+    console.log('User not found');
+  }
+  else {
+    console.log('Could not proceed');
+  }
+}
+
+function handleResponseOk(res) {
+  let dataChunks = '';
   res.on('data', d => (dataChunks += d));
   res.on('end', async () => await onParseResponseData(JSON.parse(dataChunks)));
   res.on('error', onError);
