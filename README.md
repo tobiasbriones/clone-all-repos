@@ -24,8 +24,13 @@ already into the `clone` directory then it is skipped and not cloned.
 
 ### Caveats
 
-There's a limit (`per_page` param) in the API request which is set to 1,000
-by default, so it must be enough for any user.
+There's a limit (`per_page` param) in the API request which is set to 30 repos
+by default, see
+[Repositores \| GitHub Docs](https://docs.github.com/en/rest/repos/repos).
+
+The maximum value can be up to 100 repos per page so the script default
+config is set to that value to allow cloning all repos provided they're less
+than 100 (most cases).
 
 ### License
 
