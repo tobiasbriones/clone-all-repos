@@ -7,7 +7,7 @@ import { getArgs } from './validation.mjs';
 
 const CLONE_DIR = 'clone';
 const HOSTNAME = 'api.github.com';
-const DEF_CONFIG = { limit: 1000 };
+const DEF_CONFIG = { limit: 100 };
 const args = getArgs();
 const username = args[0];
 const path = requestPath(username).value();
