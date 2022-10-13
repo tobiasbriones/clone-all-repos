@@ -7,9 +7,10 @@ import { getArgs } from './validation.mjs';
 
 const CLONE_DIR = 'clone';
 const HOSTNAME = 'api.github.com';
+const DEF_CONFIG = { limit: 1000 };
 const args = getArgs();
 const username = args[0];
-const path = getPath(username);
+const path = requestPath(username).value();
 const options = {
   hostname: HOSTNAME,
   path: path,
@@ -23,8 +24,14 @@ const req = https.request(options, handleResponse);
 req.on('error', onError);
 req.end();
 
-function getPath(username) {
-  return `/users/${ username }/repos`;
+function requestPath(username) {
+  const path = `/users/${ username }/repos`;
+  return {
+    value(params) {
+      const { limit } = params || DEF_CONFIG;
+      return path + `?per_page=${ limit }`;
+    }
+  };
 }
 
 function handleResponse(res) {
